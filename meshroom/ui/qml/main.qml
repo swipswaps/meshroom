@@ -561,18 +561,20 @@ ApplicationWindow {
                     }
                 }
 
-                Loader {
-                    id: mainTabLoader
-                    clip: true
-                    anchors.fill: parent
-                    property var components: [graphEditorComponent, taskManagerComponent]
-                    sourceComponent: components[graphEditorPanel.currentTab]
-                }
+//                Loader {
+//                    id: mainTabLoader
+//                    clip: true
+//                    anchors.fill: parent
+//                    property var components: [graphEditorComponent, taskManagerComponent]
+//                    sourceComponent: components[graphEditorPanel.currentTab]
+//                }
 
-                Component {
-                    id: graphEditorComponent
+//                Component {
+//                    id: graphEditorComponent
                     GraphEditor {
                         id: graphEditor
+
+                        visible: graphEditorPanel.currentTab === 0
 
                         anchors.fill: parent
                         uigraph: _reconstruction
@@ -605,18 +607,21 @@ ApplicationWindow {
                         onComputeRequest: computeManager.compute(node)
                         onSubmitRequest: computeManager.submit(node)
                     }
-                }
+//                }
 
-                Component {
-                    id: taskManagerComponent
+//                Component {
+//                    id: taskManagerComponent
                     TaskManager {
                         id: taskManager
+
+                        visible: graphEditorPanel.currentTab === 1
+
                         uigraph: _reconstruction
                         taskManager: _reconstruction.taskManager
 
                         anchors.fill: parent
                     }
-                }
+//                }
 
             }
 
