@@ -306,6 +306,7 @@ class UIGraph(QObject):
         if self._graph:
             self.clearNodeHover()
             self.clearNodeSelection()
+            self._taskManager.clear()
             self._graph.deleteLater()
             self._graph = None
         self._sortedDFSChunks.clear()
